@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <Title>Jadyn Violet: The Underground</Title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+
+
+<style>
+    /*Base*/
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        font-size: 1.6rem;
+        font-family: 'Courier New', Courier, monospace, bold;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    /*Utilities*/
+
+    .container {
+        max-width: 120rem;
+        margin: 0 auto;
+        padding: 10 1.5rem;
+    }
+
+
+    .hue-shift {
+        animation: hue-shift 5s infinite alternate;
+    }
+
+    /*Header & Nav*/
+    header {
+        position: absolute;
+        display: inline-block;
+        top: 0rem;
+        right: 0rem;
+        z-index: 1000;
+        width: 100%;
+    }
+
+    section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        width: 100%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .nav {
+        height: 15rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: left;
+        list-style-type: none;
+        padding-left: 8rem;
+
+    }
+
+    .nav-list {
+        display: flex;
+
+    }
+
+    .nav-item {
+        margin-right: 5rem;
+        
+    }
+
+    .nav-item:last-child {
+        margin-right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: #fff;
+        transition: opacity .3s;
+    }
+
+    .nav-link:hover {
+        opacity: .6;
+    }
+
+    .logo {
+        display: block;
+        width: 25rem;
+    }
+
+    #connectWallet{
+        color:red;
+        padding: 5px;
+        margin-bottom: 5px
+    }
+
+    #reveal{
+        color:blue;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    #uvrBtn{
+        color:grey;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    /*Main content*/
+    .landing-page {
+        width: 100%;
+        min-height: 100vh;
+        background-image: linear-gradient(to bottom right, #000000, #2B3153);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        z-index: -1;
+    }
+
+    .landing-page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: 100vh;
+        background-image: url(./images/bg-pat.png);
+        background-size: cover;
+        opacity: .4;
+        z-index: -1;
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    .content-details {
+        max-width: 80%;
+    }
+
+    .title {
+        font-size: 6rem;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        color: #929fc5;
+        margin-bottom: 2.5rem;
+    }
+
+    .submit input {
+        border: none;
+        border-radius: 5rem;
+        padding: 2rem;
+        outline: none;
+
+    }
+
+    .smlink {
+        color: #fff;
+        position: relative;
+        margin-top: 10px;
+        display: static;
+    }
+
+    .image-group {
+        text-align: center;
+        position: relative;
+    }
+
+    .blob-large {
+        animation: move-up 2s infinite alternate;
+    }
+
+    .blob-bean {
+        position: absolute;
+        top: 2.5rem;
+        left: -1rem;
+        z-index: 10;
+        animation: move-down 2s infinite alternate;
+    }
+
+    .blob {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .blob-1 {
+        top: -21rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .blob-2 {
+        top: 15rem;
+        left: -5rem;
+    }
+
+    .blob-3 {
+        right: 5rem;
+        bottom: -5rem;
+    }
+
+    .blob-4 {
+        left: -42rem;
+        bottom: -40rem;
+    }
+
+    /*Animations*/
+    @keyframes move-up {
+        from {
+            transform: translateY(0);
+        }
+
+        to {
+            transform: translate(2rem);
+        }
+    }
+
+    @keyframes move-down {
+        from {
+            transform: translateY(0);
+        }
+
+        to {
+            transform: translate(-2rem);
+        }
+    }
+
+    @keyframes hue-shift {
+        from {
+            filter: hue-rotate(0);
+        }
+
+        to {
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    /*Media Queries*/
+    @media screen and (max-width: 768) {
+        .nav {
+            align-items: center;
+        }
+
+        .content {
+            grid-template-columns: 1fr;
+        }
+
+        .content-details {
+            order: 0;
+        }
+
+        .title {
+            font-size: 3.5rem;
+        }
+
+        .navitem {
+            margin-top: 2rem;
+        }
+
+        .image-group {
+            margin-top: 2rem;
+        }
+
+        .blob-large {
+            width: 70%;
+        }
+
+        .blob-bean {
+            width: 30%;
+            top: -1rem;
+            left: 5rem;
+
+        }
+
+        .blob-1 {
+            display: none;
+        }
+
+        .blob-2 {
+            left: 30rem;
+            bottom: 1rem;
+            top: revert;
+            width: 25%;
+        }
+
+        .blob-3 {
+            right: -3rem;
+            bottom: -25rem;
+        }
+
+        .blob-4 {
+            display: none;
+        }
+    }
+
+    /*body{
+        background-color: red;
+    }
+    
+    @media screen and (max-width: 740px) {
+       body{
+            background-color: red
+       };
+    }
+    
+    @media screen and (max-width: 540px) {
+       body{
+            background-color: yellow
+       };
+    }*/
+</style>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <navitem class="navitem">
+                <ul class="nav-list"></ul>
+                <li class="navitem">
+                    <button id="connectWallet">Connect</button>
+                </li>
+                <li class="navitem">
+                    <button id="reveal">Access The Underground</button>
+                <li class="navitem">
+                    <button id="uvrBtn">UVR</button>
+                </navitem>
+            </nav>
+        </div>
+    </header>
+
+    <section class="landing-page">
+        <div class="container">
+            <div class="content">
+                <div class="content-details">
+                    <h1 class="title">Good always turns evil.</h1>
+                    <p class="description">
+
+                    </p>
+
+                    <div class="submit">
+                        <br>
+                        <br>
+                        <!--<div class="smlist">
+                        <a href="https://twitter.com/jadynviolet" class="smlink">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jadynviolet/?hl=en" class="smlink">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://soundcloud.com/jadynviolet" class="smlink">
+                            <i class="fab fa-soundcloud"></i>
+                        </a>
+                        <a href="https://open.spotify.com/artist/3EzhvtRgIkIPK0VYNv1ooV" class="smlink">
+                            <i class="fab fa-spotify"></i>
+                        </a>  
+                    </div>-->
+                    </div>
+                </div>
+
+                <div class="image-group hue-shift">
+                    <img src="/liq-5.png" alt="" class="blob-large">
+                    <img src="/liq-4.png" alt="" class="blob-bean">
+                    <img src="/liq-1.png" alt="" class="blob blob-1 hue-shift">
+                    <img src="/liq-2.png" alt="" class="blob blob-2 hue-shift">
+                    <img src="/liq-3.png" alt="" class="blob blob-3 hue-shift">
+                    <img src="/liq-6.png" alt="" class="blob blob-4 hue-shift">
+
+                </div>
+            </div>
+        </div>
+
+        <!--<img src="./images/liq-1.png" alt="" class="blob blob-1">
+    <img src="./images/liq-2.png" alt="" class="blob blob-2">
+    <img src="./images/liq-3.png" alt="" class="blob blob-3">
+    <img src="./images/liq-6.png" alt="" class="blob blob-4">
+    -->
+
+    </section>
+
+
+
+
+
+
+</body>
+
+<script>
+
+    //user clicks reveal button before connecting wallet
+    function alertFunc() {
+        alert("Please Connect Your Wallet First!");
+    }
+    document.getElementById('reveal').onclick = alertFunc
+
+    //connect metamask
+    var account = null;
+    const connect = async () => {
+        if (window.ethereum) {
+            await window.ethereum.send('eth_requestAccounts')
+            window.web3 = new Web3(window.ethereum)
+
+            var accounts = await web3.eth.getAccounts()
+            account = accounts[0];
+            document.getElementById('connectWallet').innerHTML = "Connected"
+            document.getElementById('reveal').onclick = revealMsg
+        }
+    }
+
+    const revealMsg = async () => {
+        var signature = await web3.eth.personal.sign("Please allow jadynviolet.xyz to view your NFT collection balance.", account)
+        console.log(signature)
+
+        var res = await fetch('/exclusive?signature=' + signature)
+        //console.log(res)
+        var body = await res.text()
+        console.log(body)
+        if (body != 'FALSE') {
+            const scriptEL = document.createRange().createContextualFragment(body)
+            const lostTapesPage = document.open("text/html", "replace")
+            lostTapesPage.write(body)
+            lostTapesPage.close()
+        } else {
+            alert("Sorry, you do not own one of Jadyn's NFTs")
+        }
+    }
+
+    //PAGE REDIRECTS
+    const uvrBanner = async () => {
+        window.location = ("/uvr")
+    }
+
+    //ONCLICKS
+
+    
+    document.getElementById('connectWallet').onclick = connect
+    document.getElementById('uvrBtn').onclick = uvrBanner
+
+</script>
+
+
+
+</html>
