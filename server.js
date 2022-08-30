@@ -51,6 +51,10 @@ app.get('/uvr', (req, res) => {
     res.sendFile(path.join(__dirname, '/uvr.html'))
 })
 
+app.get('/comingSoon', (req, res) => {
+    res.sendFile(path.join(__dirname, '/comingSoon.html'))
+})
+
 app.listen(port, () => {
     console.log('listening at 3000')
 })

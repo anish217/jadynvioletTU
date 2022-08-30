@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <Title>Jadyn Violet: The Underground</Title>
+    <Title>Jadyn Violet</Title>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </head>
 
@@ -19,13 +19,15 @@
         font-size: 62.5%;
     }
 
-    body {
-        font-size: 1.6rem;
+    a {
+        text-decoration: none;
+        color: white;
         font-family: 'Courier New', Courier, monospace, bold;
     }
 
-    a {
-        text-decoration: none;
+    body {
+        font-size: 1.4rem;
+        
     }
 
     img {
@@ -82,7 +84,7 @@
 
     .nav-item {
         margin-right: 5rem;
-        
+
     }
 
     .nav-item:last-child {
@@ -90,7 +92,7 @@
     }
 
     .nav-link {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         text-transform: uppercase;
         color: #fff;
         transition: opacity .3s;
@@ -105,28 +107,31 @@
         width: 25rem;
     }
 
-    #connectWallet{
-        padding:0;
+    #connectWallet {
+        padding: 0;
         background-color: transparent;
-        color:white;
-        border:0;
-        margin:0;
+        color: white;
+        border: 0;
+        margin: 0;
+        font-family: 'Courier New', Courier, monospace, bold;
     }
 
-    #reveal{
-        padding:0;
+    #reveal {
+        padding: 0;
         background-color: transparent;
-        color:white;
-        border:0;
-        margin:0;
+        color: white;
+        border: 0;
+        margin: 0;
+        font-family: 'Courier New', Courier, monospace, bold;
     }
 
-    #uvrBtn{
-        padding:0;
+    #uvrBtn {
+        padding: 0;
         background-color: transparent;
-        color:white;
-        border:0;
-        margin:0;
+        color: white;
+        border: 0;
+        margin: 0;
+        font-family: 'Courier New', Courier, monospace, bold;
     }
 
     /*Main content*/
@@ -320,6 +325,8 @@
         .blob-4 {
             display: none;
         }
+
+
     }
 
     /*body{
@@ -345,14 +352,16 @@
         <div class="container">
             <nav class="nav">
                 <navitem class="navitem">
-                <ul class="nav-list"></ul>
-                <li class="navitem">
-                    <button id="connectWallet">Connect</button>
-                </li>
-                <li class="navitem">
-                    <button id="reveal">Access The Underground</button>
-                <li class="navitem">
-                    <button id="uvrBtn">UVR</button>
+                    <ul class="nav-list"></ul>
+                    <li class="navitem">
+                        <button id="connectWallet">Connect Wallet</button>
+                    </li>
+                    <li class="navitem">
+                        <button id="reveal">Access The Underground</button>
+                    <li class="navitem">
+                        <a href="https://linktr.ee/jadynviolet" target="_blank" rel="noopener noreferrer">Violet</a>
+                    <li class="navitem">
+                        <button id="uvrBtn">UVR Banners</button>
                 </navitem>
             </nav>
         </div>
@@ -362,7 +371,7 @@
         <div class="container">
             <div class="content">
                 <div class="content-details">
-                    <h1 class="title">Jadyn Violet's</h1>
+                    <h1 class="title">Jadyn Violet.</h1>
                     <p class="description">
 
                     </p>
@@ -436,12 +445,12 @@
         }
     }
 
+    //reveal exclusive page
     const revealMsg = async () => {
         var signature = await web3.eth.personal.sign("Please allow jadynviolet.xyz to view your NFT collection balance.", account)
         console.log(signature)
 
         var res = await fetch('/exclusive?signature=' + signature)
-        //console.log(res)
         var body = await res.text()
         console.log(body)
         if (body != 'FALSE') {
@@ -460,10 +469,9 @@
     }
 
     //ONCLICKS
-
-    
     document.getElementById('connectWallet').onclick = connect
     document.getElementById('uvrBtn').onclick = uvrBanner
+
 
 </script>
 
