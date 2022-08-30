@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gated Violet</title>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <!---<nav class="nav">
+            <a href="index.html" class="logo-box">
+                <img src="./images/#" alt="" class="logo">
+            </a>
+            <navitem class="navitem">
+            <ul class="nav-list"></ul>
+            <li class="navitem">
+                <a id="connectWallet" class="nav-link">Connect Wallet</a>
+            </li>
+            <li class="navitem">
+                <a id="reveal" class="nav-link">Access The Underground</a>
+            <li class="navitem">
+                <a href="/uvr" class="nav-link">UVR</a>
+            </navitem>
+        </nav>-->
+
+        <button id="connectWallet">Connect Wallet</button>
+        <button id="reveal">Access The Underground</button>
+    </div>
+</header>
+
+<section class="landing-page">
+    <div class="container">
+        <div class="content">
+            <div class="content-details">
+                <h1 class="title">Jadyn Violet.</h1>
+                <p class="description">
+    
+                </p>
+    <!--
+                <div class="submit">
+                    <input type="submit" value="Connect" id="connectWallet">
+                    <br>
+                    <br>
+                </div>
+                -->
+            </div>
+
+            <div class="image-group hue-shift">
+                <img src="/images/liq-5.png" alt="" class="blob-large">
+                <img src="/images/liq-4.png" alt="" class="blob-bean">
+                <img src="/images/liq-1.png" alt="" class="blob blob-1 hue-shift">
+                <img src="/images/liq-2.png" alt="" class="blob blob-2 hue-shift">
+                <img src="/images/liq-3.png" alt="" class="blob blob-3 hue-shift">
+                <img src="/images/liq-6.png" alt="" class="blob blob-4 hue-shift">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+
+<script>
+
+    //user clicks reveal button before connecting wallet
+    function alertFunc() {
+        alert("Please Connect Your Wallet First!");
+    }
+    document.getElementById('reveal').onclick = alertFunc
+
+    //connect metamask
+    var account = null;
+    const connect = async () => {
+        if (window.ethereum) {
+            await window.ethereum.send('eth_requestAccounts')
+            window.web3 = new Web3(window.ethereum)
+
+            var accounts = await web3.eth.getAccounts()
+            account = accounts[0];
+            document.getElementById('connectWallet').innerHTML = "Connected"
+            document.getElementById('reveal').onclick = revealMsg
+        }
+    }
+
+    const revealMsg = async () => {
+        var signature = await web3.eth.personal.sign("Please allow jadynviolet.xyz to view your NFT collection balance.", account)
+        console.log(signature)
+
+        var res = await fetch('/exclusive?signature=' + signature)
+        //console.log(res)
+        var body = await res.text()
+        console.log(body)
+        if (body != 'FALSE') {
+            const scriptEL = document.createRange().createContextualFragment(body)
+            const lostTapesPage = document.open("text/html", "replace")
+            lostTapesPage.write(body)
+            lostTapesPage.close()
+        } else {
+            alert("Sorry, you do not own one of Jadyn's NFTs")
+        }
+    }
+
+    //PAGE REDIRECTS
+    const uvrBanner = async () => {
+        window.location = ("/uvr.html")
+    }
+
+    //ONCLICKS
+
+    
+    document.getElementById('connectWallet').onclick = connect
+    document.getElementById('uvrBtn').onclick = uvrBanner
+
+</script>
+
+</html>

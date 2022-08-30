@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Document</title>
+
+        <!-- OWN CSS FILES-->
+        <link rel="stylesheet" href="css/astro2.css"/>
+        <!-- END OWN CSS FILES-->
+    </head>
+  <body>
+    <section class="showcase">
+        <header>
+          <h2 class="logo">UVR</h2>
+          <div class="toggle"></div>
+        </header>
+        <video src="galaxysubway.dvr.mp4" muted loop autoplay></video>
+        <div class="overlay"></div>
+        <div class="text">
+          <h2>Welcome </h2> 
+          <h3></h3>
+          <p>to the underground...</p>
+          <a href="https://drive.google.com/drive/folders/1YefI0WccvGmqpIPH76-O56B_U6KQy5cY?usp=sharing">MUSIC</a>
+          <a href="https://drive.google.com/drive/folders/1F5DFqzHr9esMkje6H8Nsc95za_5IrHFD?usp=sharing">VIDEOS</a>
+        </div>
+        <ul class="social">
+          <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a></li>
+          <li><a href="https://twitter.com/jadynviolet?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a></li>
+          <li><a href="https://www.instagram.com/jadynviolet/?hl=en"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
+        </ul>
+      </section>
+      <div class="menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">jadyn.xyz</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+    </section>
+
+  </body>
+
+  <script>
+     const menuToggle = document.querySelector('.toggle');
+      const showcase = document.querySelector('.showcase');
+
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        showcase.classList.toggle('active');
+      })
+  </script>
+</html>

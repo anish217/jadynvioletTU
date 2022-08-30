@@ -5,7 +5,7 @@ const Web3 = require('web3')
 
 
 const app = express()
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 
 const web3 = new Web3("https://rpc.flashbots.net");
 
@@ -40,7 +40,7 @@ app.get('/exclusive', async (req, res) => {
 
     if(balanceOne > 0 || balanceTwo > 0 || balanceThree > 0 || balanceFour > 0){
         //send the file
-        res.sendFile(path.join(__dirname, '/lostTapes.html'))
+        res.sendFile(path.join(__dirname, '/astropage2.html'))
     }else{  
         res.send("FALSE")
     }
