@@ -4,14 +4,10 @@
 
 <body>
 
-  <script>
-    const goHome = async () => {
-      window.location = ("/")
-    }
-  </script>
+  
 
   <h1>UNDERGROUND VIOLET RAVE</h1>
-  <button class="cybr-btn" onclick="location.href='gallerypage.html'">
+  <button class="cybr-btn">
     Brooklyn NY<span aria-hidden></span>
     <span aria-hidden class="cybr-btn__glitch">VIOLET</span>
     <span aria-hidden class="cybr-btn__tag">R25</span>
@@ -27,7 +23,17 @@
     <span aria-hidden class="cybr-btn__tag">R25</span>
   </button>
   <p>by J. Violet</p>
+  <button id="home">Home</button>
+
  
 </body>
+
+<script>
+  const goHome = async () => {
+    window.location = ("/")
+  }
+  document.getElementById("home").onclick = goHome;
+</script>
+
 
 </html>
